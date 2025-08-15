@@ -1,5 +1,5 @@
-import 'package:cinebox/ui/core/themes/theme.dart';
 import 'package:cinebox/ui/splash/splash_screen.dart';
+import 'package:cinebox/ui/themes/theme.dart';
 import 'package:flutter/material.dart';
 
 class CineboxMainApp extends StatelessWidget {

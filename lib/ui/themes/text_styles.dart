@@ -1,4 +1,4 @@
-import 'package:cinebox/ui/core/themes/colors.dart';
+import 'package:cinebox/ui/themes/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract final class AppTextStyles {
