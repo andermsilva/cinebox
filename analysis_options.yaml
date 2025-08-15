@@ -8,6 +8,13 @@
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
+analyzer:
+  errors:
+    body_might_complete_normally: ignore
+  plugins:
+    - custom_lint
+  exclude:
+    - "**/*.g.dart"
 
 formatter:
   trailing_commas: preserve
