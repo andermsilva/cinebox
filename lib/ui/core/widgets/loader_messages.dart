@@ -21,7 +21,8 @@ mixin LoaderAndMessage<T extends ConsumerStatefulWidget> on ConsumerState<T> {
     }
   }
 
-  void _SnackBabar(String message, color) {
+  // ignore: non_constant_identifier_names
+  void _SnackBar(String message, color) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
@@ -38,11 +39,9 @@ mixin LoaderAndMessage<T extends ConsumerStatefulWidget> on ConsumerState<T> {
   }
 
   void showErrorSnackBar(String message) =>
-      _SnackBabar(message, AppColors.redColor);
+      _SnackBar(message, AppColors.redColor);
 
-  void showSuccessSnackBar(String message) =>
-      _SnackBabar(message, Colors.green);
+  void showSuccessSnackBar(String message) => _SnackBar(message, Colors.green);
 
-  void showInfoSnackBar(String message) =>
-      _SnackBabar(message, Colors.lightBlue);
+  void showInfoSnackBar(String message) => _SnackBar(message, Colors.lightBlue);
 }
