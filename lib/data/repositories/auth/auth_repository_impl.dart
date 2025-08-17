@@ -2,20 +2,25 @@ import 'dart:developer';
 
 import 'package:cinebox/core/result/result.dart';
 import 'package:cinebox/data/exceptions/data_exception.dart';
+import 'package:cinebox/data/service/auth/auth_service.dart';
 import 'package:cinebox/data/service/google_signin/google_signin_service.dart';
 import 'package:cinebox/data/service/local_storage/local_storage_service.dart';
+import 'package:dio/dio.dart';
 
 import './auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final LocalStorageService _localStorageService;
   final GoogleSigninService _googleSigninService;
+  final AuthService _authService;
 
   AuthRepositoryImpl({
     required localStorageService,
     required googleSigninService,
+    required AuthService authService,
   }) : _localStorageService = localStorageService,
-       _googleSigninService = googleSigninService;
+       _googleSigninService = googleSigninService,
+       _authService = authService;
 
   @override
   Future<Result<bool>> isLogged() async {
@@ -32,8 +37,21 @@ class AuthRepositoryImpl implements AuthRepository {
     final result = await _googleSigninService.signIn();
     switch (result) {
       case Success<String>(:final value):
-        await _localStorageService.saveToken(value);
-        return successOfUnit();
+        try {
+          await _localStorageService.saveToken(value);
+          await _authService.auth();
+          return successOfUnit();
+        } on DioException catch (e, s) {
+          log(
+            'Erro ao autenticar o usúario no backend',
+            name: 'AuthRepository',
+            error: e,
+            stackTrace: s,
+          );
+          return Failure(
+            DataException(message: 'Erro ao realizar login no backend'),
+          );
+        }
 
       case Failure<String>(:final error):
         log(
@@ -53,7 +71,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     switch (result) {
       case Success<Unit>():
-        final removeResult = _localStorageService.removeToken();
+        final removeResult = await _localStorageService.removeToken();
         switch (removeResult) {
           case Success<Unit>():
             return successOfUnit();
@@ -62,6 +80,7 @@ class AuthRepositoryImpl implements AuthRepository {
             log('Erro ao realizar logout ID Token');
             return Failure(error);
         }
+
       case Failure<Unit>(:final error):
         return Failure(error);
     }
