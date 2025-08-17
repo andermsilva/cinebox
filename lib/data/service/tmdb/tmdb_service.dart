@@ -58,6 +58,6 @@ abstract class TmdbService {
   Future<MovieDetailsResponse> getMoviesDetails({
     @Query('language') String language = 'pt-BR',
     @Path('movie_id') int movieId,
-    @Query('appende_to_response') String appendToResponse = '',
+    @Query('append_to_response') String appendToResponse = '',
   });
 }

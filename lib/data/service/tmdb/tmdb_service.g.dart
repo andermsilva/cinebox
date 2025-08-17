@@ -258,7 +258,7 @@ class _TmdbService implements TmdbService {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'language': language,
-      r'appende_to_response': appendToResponse,
+      r'append_to_response': appendToResponse,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
