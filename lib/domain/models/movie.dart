@@ -5,7 +5,7 @@ class Movie {
   final String title;
   final String overview;
   final List<int> genreId;
-  final String? postPath;
+  final String? postePath;
   final String? backdroPath;
   final double voteAverage;
   final String? releaseDate;
@@ -16,7 +16,7 @@ class Movie {
     required this.title,
     required this.overview,
     required this.genreId,
-    this.postPath,
+    this.postePath,
     this.backdroPath,
     required this.voteAverage,
     this.releaseDate,
@@ -28,7 +28,7 @@ class Movie {
     String? title,
     String? overview,
     List<int>? genreId,
-    ValueGetter<String?>? postPath,
+    ValueGetter<String?>? postePath,
     ValueGetter<String?>? backdroPath,
     double? voteAverage,
     ValueGetter<String?>? releaseDate,
@@ -39,7 +39,7 @@ class Movie {
       title: title ?? this.title,
       overview: overview ?? this.overview,
       genreId: genreId ?? this.genreId,
-      postPath: postPath != null ? postPath() : this.postPath,
+      postePath: postePath != null ? postePath() : this.postePath,
       backdroPath: backdroPath != null ? backdroPath() : this.backdroPath,
       voteAverage: voteAverage ?? this.voteAverage,
       releaseDate: releaseDate != null ? releaseDate() : this.releaseDate,

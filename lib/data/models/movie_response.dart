@@ -5,8 +5,9 @@ part 'movie_response.g.dart';
 
 @JsonSerializable()
 class MovieResponse {
+  final String title;
   final int page;
-  final List<MovieItem> result;
+  final List<MovieItem> results;
   final int totalResults;
   final int totalpages;
 
@@ -14,8 +15,9 @@ class MovieResponse {
       _$MovieResponseFromJson(json);
 
   MovieResponse({
+    required this.title,
     required this.page,
-    required this.result,
+    required this.results,
     required this.totalResults,
     required this.totalpages,
   });

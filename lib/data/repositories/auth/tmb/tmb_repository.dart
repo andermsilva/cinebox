@@ -6,4 +6,19 @@ abstract interface class TmbRepository {
     required String language,
     required int page,
   });
+
+  Future<Result<List<Movie>>> getTopRatedMovies({
+    required String language,
+    required int page,
+  });
+
+  Future<Result<List<Movie>>> getNowPlayingMovies({
+    required String language,
+    required int page,
+  });
+
+  Future<Result<List<Movie>>> getUpComingMovies({
+    required String language,
+    required int page,
+  });
 }
