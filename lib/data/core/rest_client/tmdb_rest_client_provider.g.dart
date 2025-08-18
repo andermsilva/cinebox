@@ -6,24 +6,24 @@ part of 'tmdb_rest_client_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-@ProviderFor(backendRestClient)
-const backendRestClientProvider = BackendRestClientProvider._();
+@ProviderFor(tmdbRestClient)
+const tmdbRestClientProvider = TmdbRestClientProvider._();
 
-final class BackendRestClientProvider extends $FunctionalProvider<Dio, Dio, Dio>
+final class TmdbRestClientProvider extends $FunctionalProvider<Dio, Dio, Dio>
     with $Provider<Dio> {
-  const BackendRestClientProvider._()
+  const TmdbRestClientProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'backendRestClientProvider',
+        name: r'tmdbRestClientProvider',
         isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$backendRestClientHash();
+  String debugGetCreateSourceHash() => _$tmdbRestClientHash();
 
   @$internal
   @override
@@ -32,7 +32,7 @@ final class BackendRestClientProvider extends $FunctionalProvider<Dio, Dio, Dio>
 
   @override
   Dio create(Ref ref) {
-    return backendRestClient(ref);
+    return tmdbRestClient(ref);
   }
 
   /// {@macro riverpod.override_with_value}
@@ -44,7 +44,7 @@ final class BackendRestClientProvider extends $FunctionalProvider<Dio, Dio, Dio>
   }
 }
 
-String _$backendRestClientHash() => r'f12b0907f119dd4031a4028a1e8cf2c09b7981b8';
+String _$tmdbRestClientHash() => r'59fc0fbda07c8352951b182afcbfe872d12af30a';
 
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

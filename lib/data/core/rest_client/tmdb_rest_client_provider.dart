@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'tmdb_rest_client_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-Dio backendRestClient(Ref ref) {
+Dio tmdbRestClient(Ref ref) {
   final dio = Dio(
     BaseOptions(
       baseUrl: 'https://api.themoviedb.org/3',
@@ -13,8 +13,8 @@ Dio backendRestClient(Ref ref) {
       receiveTimeout: const Duration(seconds: 60),
     ),
   );
-  dio.options.headers['Content-types'] = 'application/json';
-  dio.options.headers['Authorizattion'] = 'Bearer ${Env.theMovieDbApiKey}';
+  dio.options.headers['Content-Types'] = 'application/json';
+  dio.options.headers['Authorization'] = 'Bearer ${Env.theMovieDbApiKey}';
   dio.interceptors.addAll([
     LogInterceptor(
       request: true,

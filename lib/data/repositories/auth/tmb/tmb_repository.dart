@@ -3,7 +3,7 @@ import 'package:cinebox/domain/models/movie.dart';
 
 abstract interface class TmbRepository {
   Future<Result<List<Movie>>> getPopularMovies({
-    required String language,
+    required String? language,
     required int page,
   });
 

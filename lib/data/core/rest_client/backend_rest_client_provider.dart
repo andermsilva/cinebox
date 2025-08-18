@@ -33,7 +33,7 @@ Dio backendRestClient(Ref ref) {
       receiveTimeout: const Duration(seconds: 30),
     ),
   );
-  dio.options.headers['Content-types'] = 'application/json';
+  dio.options.headers['Content-Types'] = 'application/json';
   dio.interceptors.addAll([
     BackendAuthIterceptor(ref: ref),
     LogInterceptor(
